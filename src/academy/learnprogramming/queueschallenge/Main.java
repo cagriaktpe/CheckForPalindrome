@@ -27,8 +27,6 @@ public class Main {
         Queue<Character> queue = new LinkedList<Character>();
         for(int i = 0; i < string.length(); i++) {
             stack.push(string.charAt(i));
-        }
-        for (int i = 0; i < string.length(); i++) {
             queue.add(string.charAt(i));
         }
         /* stack pop thing */
