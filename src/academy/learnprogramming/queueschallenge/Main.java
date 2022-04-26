@@ -22,18 +22,18 @@ public class Main {
 
     public static boolean checkForPalindrome(String string) {
         string = string.toLowerCase();
-        string = string.replaceAll("[^a-zA-Z0-9]", "");
-        Stack<Character> stack = new Stack<Character>();
-        Queue<Character> queue = new LinkedList<Character>();
+        LinkedList<Character> stack = new LinkedList<Character>();
+        LinkedList<Character> queue = new LinkedList<Character>();
         for(int i = 0; i < string.length(); i++) {
-            stack.push(string.charAt(i));
-            queue.add(string.charAt(i));
+            Character c = string.charAt(i);
+            if (c >= 'a' && c <= 'z') {
+                stack.push(c);
+                queue.addLast(c);
+            }
         }
         /* stack pop thing */
-        for (int i = 0; i < string.length(); i++) {
-            Character c = stack.pop();
-            Character c2 = queue.remove();
-            if (c != c2) {
+        while (!stack.isEmpty()) {
+            if (!stack.pop().equals(queue.removeFirst())) {
                 return false;
             }
         }
